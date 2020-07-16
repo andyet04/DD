@@ -1,0 +1,21 @@
+<?php
+	header("Content-type:text/html;charset=utf-8");
+	$host='127.0.0.1'; //你資料庫的位置
+	$name='root'; //帳號
+	$pwd='';//密碼
+	$db='breakfast'; //資料庫名稱
+
+	$con=mysqli_connect($host,$name,$pwd) or die("connection failed");
+
+	$selected = mysqli_select_db($con,$db)  
+	or die("Could not select examples");  
+
+	mysqli_query( $con, "SET NAMES 'utf8'");
+	$result=mysqli_query($con,"SELECT * FROM table 1");//user=資料表
+	
+	if( !$result ){
+		printf("Error: %s\n", mysqli_error($con));
+		exit();
+	}
+	mysqli_close($con);
+?>
